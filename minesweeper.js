@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', startGame)
 //At least one of those cells is not an object! { }
 
 var board={
-    cells: [ {row:0,col:1,isMine:false,hidden:true},
-             {row:0,col:2,isMine:false,hidden:true},
-             {row:0,col:3,isMine:false,hidden:true},
-             {row:1,col:1,isMine:false,hidden:true},
-             {row:1,col:2,isMine:false,hidden:true},
-             {row:1,col:3,isMine:false,hidden:true},
-             {row:2,col:1,isMine:false,hidden:true},
-             {row:2,col:2,isMine:false,hidden:true},
-             {row:2,col:3,isMine:false,hidden:true}
+    cells: [ {row:0,col:1,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:0,col:2,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:0,col:3,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:1,col:1,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:1,col:2,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:1,col:3,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:2,col:1,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:2,col:2,isMine:false,isMarked:false,hidden:true,surroundingMines:2},
+             {row:2,col:3,isMine:false,isMarked:false,hidden:true,surroundingMines:2}
     ]
 }
 
