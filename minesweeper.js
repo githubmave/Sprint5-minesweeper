@@ -11,16 +11,25 @@ var board={
     cells: [ {row:0,col:1,isMine:false,isMarked:false,hidden:true},
              {row:0,col:2,isMine:true,isMarked:false,hidden:true},
              {row:0,col:3,isMine:false,isMarked:false,hidden:true},
+             {row:0,col:4,isMine:false,isMarked:false,hidden:true},
+
              {row:1,col:1,isMine:true,isMarked:false,hidden:true},
              {row:1,col:2,isMine:false,isMarked:false,hidden:true},
              {row:1,col:3,isMine:true,isMarked:false,hidden:true},
+             {row:1,col:4,isMine:false,isMarked:false,hidden:true},
+
              {row:2,col:1,isMine:false,isMarked:false,hidden:true},
              {row:2,col:2,isMine:true,isMarked:false,hidden:true},
-             {row:2,col:3,isMine:false,isMarked:false,hidden:true}
+             {row:2,col:3,isMine:false,isMarked:false,hidden:true},
+             {row:2,col:4,isMine:false,isMarked:false,hidden:true},
+
+             {row:3,col:1,isMine:false,isMarked:false,hidden:true},
+             {row:3,col:2,isMine:true,isMarked:false,hidden:true},
+             {row:3,col:3,isMine:false,isMarked:false,hidden:true},
+             {row:3,col:4,isMine:false,isMarked:false,hidden:true},
+
     ]
 }
-
-
 
 
 
@@ -45,12 +54,36 @@ function checkForWin () {
 // (there could be as many as 8). You don't have to get the surrounding
 // cells yourself! Just use `lib.getSurroundingCells`: 
 //
-//   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
-//
+
+board.cells.map(function(cell){
+  var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
+  
+  cell.surroundingMines=countSurroundingMines(surroundingCells);
+
+});
+
+
+
+  
+ // var surrounding = lib.getSurroundingCells(cell.row, cell.col)
+
+  
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
-function countSurroundingMines (cell) {
-    
+function countSurroundingMines (cells) {
+      var surroundingMines;
 
+      cells.map(cell =>{
+            
+           if(cell.isMine==true||surroundingMines<=8){
+              surroundingMines++;
+           }
+           else{
+              surroundingMines=0;
+
+           }
+
+      });
+    return surroundingMines;
 }
 
