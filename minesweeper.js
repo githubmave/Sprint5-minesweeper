@@ -1,7 +1,29 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-// var board = 
+//Your board object needs a property named cells
+//cells.board.cells should be an array.
+//This board doesn't seem to have any cells in it... 
+//try adding some elements to your array.
+//At least one of those cells is not an object! { }
+
+var board={
+    cells: [ {row:0,col:1,isMine:false,hidden:true},
+             {row:0,col:2,isMine:false,hidden:true},
+             {row:0,col:3,isMine:false,hidden:true},
+             {row:1,col:1,isMine:false,hidden:true},
+             {row:1,col:2,isMine:false,hidden:true},
+             {row:1,col:3,isMine:false,hidden:true},
+             {row:2,col:1,isMine:false,hidden:true},
+             {row:2,col:2,isMine:false,hidden:true},
+             {row:2,col:3,isMine:false,hidden:true}
+    ]
+}
+
+
+
+
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -15,7 +37,7 @@ function startGame () {
 function checkForWin () {
 
   // You can use this function call to declare a winner (once you've
-  // detected that they've won, that is!)
+  // detected that they've won, that is!)'
   //   lib.displayMessage('You win!')
 }
 
