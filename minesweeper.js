@@ -71,19 +71,31 @@ board.cells.map(function(cell){
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cells) {
-      var surroundingMines;
+      //var surroundingMines;
 
-      cells.map(cell =>{
+      //cells.map(cell =>{
             
-           if(cell.isMine==true||surroundingMines<=8){
-              surroundingMines++;
-           }
-           else{
-              surroundingMines=0;
+           //if(cell.isMine==true||surroundingMines<=8){
+              //surroundingMines++;
+           //}
+           //else{
+              //surroundingMines=0;
 
-           }
+           //}
 
+      //});
+    //return surroundingMines;
+
+      let arr=cells.filter(cell =>{
+
+              return cell.isMine==true;
       });
-    return surroundingMines;
-}
+
+      if(arr.length<=8){
+        return arr.length; 
+      }
+      else{
+        return 0;
+      }
+   }
 
