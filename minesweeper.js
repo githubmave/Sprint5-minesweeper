@@ -36,6 +36,13 @@ var board={
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
+  board.cells.forEach(function(cell){
+    var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
+    
+    cell.surroundingMines=countSurroundingMines(surroundingCells);
+  
+  });
+  
   lib.initBoard()
 }
 
@@ -48,6 +55,33 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)'
   //   lib.displayMessage('You win!')
+    
+ // let notMarkedMine={};
+ // let neverClickedCell={};
+ // let wrongMarkedCell={};
+
+  let notMarkedMine=board.cells.find(cell =>{
+         
+       return cell.isMine==true || cell.isMarked==false;
+
+  });
+
+  let neverClickedCell=board.cells.find(cell =>{
+
+      return cell.hidden==true||cell.isMarked==false 
+
+  });
+
+  let wrongMarkedCell=board.cells.find(cell =>{
+       
+     return cell.hidden==true||cell.isMarked==true;
+  });
+  
+ 
+  if(notMarkedMine==null ||neverClickedCell==null ||wrongMarkedCell==null){
+
+    lib.displayMessage('You win!')
+  }
 }
 
 // Define this function to count the number of mines around the cell
@@ -55,16 +89,12 @@ function checkForWin () {
 // cells yourself! Just use `lib.getSurroundingCells`: 
 //
 
-board.cells.map(function(cell){
-  var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
+//board.cells.forEach(function(cell){
+  //var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
   
-  cell.surroundingMines=countSurroundingMines(surroundingCells);
+  //cell.surroundingMines=countSurroundingMines(surroundingCells);
 
-});
-
-
-
-  
+//});
  // var surrounding = lib.getSurroundingCells(cell.row, cell.col)
 
   
@@ -88,7 +118,7 @@ function countSurroundingMines (cells) {
 
       let arr=cells.filter(cell =>{
 
-              return cell.isMine==true;
+          return cell.isMine==true;
       });
 
       if(arr.length<=8){
