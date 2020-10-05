@@ -8,27 +8,29 @@ document.addEventListener('DOMContentLoaded', startGame)
 //At least one of those cells is not an object! { }
 
 var board={
-    cells: [ {row:0,col:1,isMine:false,isMarked:false,hidden:true},
-             {row:0,col:2,isMine:true,isMarked:false,hidden:true},
+    cells: [ {row:0,col:0,isMine:false,isMarked:false,hidden:true},
+             {row:0,col:1,isMine:true,isMarked:false,hidden:true},
+             {row:0,col:2,isMine:false,isMarked:false,hidden:true},
              {row:0,col:3,isMine:false,isMarked:false,hidden:true},
-             {row:0,col:4,isMine:false,isMarked:false,hidden:true},
 
-             {row:1,col:1,isMine:true,isMarked:false,hidden:true},
-             {row:1,col:2,isMine:false,isMarked:false,hidden:true},
-             {row:1,col:3,isMine:true,isMarked:false,hidden:true},
-             {row:1,col:4,isMine:false,isMarked:false,hidden:true},
+             {row:1,col:0,isMine:true,isMarked:false,hidden:true},
+             {row:1,col:1,isMine:false,isMarked:false,hidden:true},
+             {row:1,col:2,isMine:true,isMarked:false,hidden:true},
+             {row:1,col:3,isMine:false,isMarked:false,hidden:true},
 
-             {row:2,col:1,isMine:false,isMarked:false,hidden:true},
-             {row:2,col:2,isMine:true,isMarked:false,hidden:true},
+             {row:2,col:0,isMine:false,isMarked:false,hidden:true},
+             {row:2,col:1,isMine:true,isMarked:false,hidden:true},
+             {row:2,col:2,isMine:false,isMarked:false,hidden:true},
              {row:2,col:3,isMine:false,isMarked:false,hidden:true},
-             {row:2,col:4,isMine:false,isMarked:false,hidden:true},
 
-             {row:3,col:1,isMine:false,isMarked:false,hidden:true},
-             {row:3,col:2,isMine:true,isMarked:false,hidden:true},
+             {row:3,col:0,isMine:false,isMarked:false,hidden:true},
+             {row:3,col:1,isMine:true,isMarked:false,hidden:true},
+             {row:3,col:2,isMine:false,isMarked:false,hidden:true},
              {row:3,col:3,isMine:false,isMarked:false,hidden:true},
-             {row:3,col:4,isMine:false,isMarked:false,hidden:true},
 
-    ]
+    ] 
+
+    //checkForWin:checkForWin
 }
 
 
@@ -42,45 +44,48 @@ function startGame () {
     cell.surroundingMines=countSurroundingMines(surroundingCells);
   
   });
-  
+
+  //document.addEventListener('click', checkForWin);
+ // document.addEventListener('contextmenu', checkForWin);
+
   lib.initBoard()
+
+ 
 }
 
 // Define this function to look for a win condition:
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
-function checkForWin () {
+board.checkForWin=function () {
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)'
   //   lib.displayMessage('You win!')
     
- // let notMarkedMine={};
- // let neverClickedCell={};
- // let wrongMarkedCell={};
 
   let notMarkedMine=board.cells.find(cell =>{
          
-       return cell.isMine==true || cell.isMarked==false;
-
+       return cell.isMine==true&&cell.isMarked==false ;
+     
+      
   });
 
   let neverClickedCell=board.cells.find(cell =>{
 
-      return cell.hidden==true||cell.isMarked==false 
+      return cell.hidden==true&&cell.isMarked==false 
 
-  });
+ });
 
-  let wrongMarkedCell=board.cells.find(cell =>{
-       
-     return cell.hidden==true||cell.isMarked==true;
-  });
+
   
  
-  if(notMarkedMine==null ||neverClickedCell==null ||wrongMarkedCell==null){
-
+  if(notMarkedMine==undefined&&neverClickedCell==undefined 
+     ){
+    
     lib.displayMessage('You win!')
+
+    
   }
 }
 
@@ -100,6 +105,7 @@ function checkForWin () {
   
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
+
 function countSurroundingMines (cells) {
       //var surroundingMines;
 
