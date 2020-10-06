@@ -36,33 +36,49 @@ document.addEventListener('DOMContentLoaded', startGame)
 var board={cells:[]};
                 
 
-var cell={};
-
-
-
     for (var r=0;r<6;r++){
         
         for(var c=0;c<6;c++){
-          var cell={};
+           
+            var cell={};
+
             cell.row=r;
             cell.col=c;
-          
-            cell.isMine=false;
             cell.isMarked=false;
             cell.hidden=true;
+            //addMines(cell);
                     
-           addToCells(cell);
+            board.cells.push(cell);
 
         }
+  }
+  for(var i=0;i<36;i++){
+     
+      if(i==3||i==8||i==12||i==23){
+       board.cells[i].isMine=true;
+      }
+  
+      else {
+        board.cells[i].isMine=false;
+  }
+}
 
+ /* function addMines (cell){
+      
+    if(cell.row%2==0&&cell.col%3==0){
+        cell.isMine=true;  
+    }
+    else if(cell.row%3==3&&cell.col%2==0){
+      cell.isMine=true; 
     }
    
-function addToCells(cell){
+    else{
+        cell.isMine=false;
+    }
 
-  
-   board.cells.push(cell);
+  }*/
    
-}
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
