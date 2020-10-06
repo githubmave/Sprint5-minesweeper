@@ -33,36 +33,46 @@ document.addEventListener('DOMContentLoaded', startGame)
     //checkForWin:checkForWin
 }*/
 
-var board={cells:[]};
+var board={cells:[],
+
+          setBoard:setBoard,
+          reset:reset
+          };
                 
+board.setBoard();
 
-    for (var r=0;r<6;r++){
-        
-        for(var c=0;c<6;c++){
-           
-            var cell={};
+function setBoard(){
 
-            cell.row=r;
-            cell.col=c;
-            cell.isMarked=false;
-            cell.hidden=true;
-           
-            board.cells.push(cell);
+          for (var r=0;r<6;r++){
+                
+            for(var c=0;c<6;c++){
+              
+                var cell={};
 
+                cell.row=r;
+                cell.col=c;
+                cell.isMarked=false;
+                cell.hidden=true;
+              
+                board.cells.push(cell);
+
+            }
         }
-  }
-  for(var i=0;i<36;i++){
-     
-      if(i==3||i==8||i==12||i==23){
-       board.cells[i].isMine=true;
-      }
-  
-      else {
-        board.cells[i].isMine=false;
-  }
+        for(var i=0;i<36;i++){
+        
+          if(i==3||i==8||i==12||i==23){
+          board.cells[i].isMine=true;
+          }
+
+          else {
+            board.cells[i].isMine=false;
+        }
+        }
+
 }
 
 
+   
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -73,11 +83,32 @@ function startGame () {
   
   });
 
+  //document.addEventListener('click',checkForWin);
+  //document.addEventListener('contextmenu',checkForWin);
 
   lib.initBoard()
 
  
 }
+
+function reset(){
+
+  //window.onload = function(){
+ 
+      board.cells=[];  
+
+      setBoard();
+
+      // lib.initBoard();
+
+       //javascript:history.go(0);
+       window.history.go(0);
+      
+ // }
+     //document.addEventListener('DOMContentLoaded',lib.initBoard);
+}
+
+
 
 // Define this function to look for a win condition:
 //
