@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 //try adding some elements to your array.
 //At least one of those cells is not an object! { }
 
-var board={
+/*var board={
     cells: [ {row:0,col:0,isMine:false,isMarked:false,hidden:true},
              {row:0,col:1,isMine:true,isMarked:false,hidden:true},
              {row:0,col:2,isMine:false,isMarked:false,hidden:true},
@@ -31,10 +31,38 @@ var board={
     ] 
 
     //checkForWin:checkForWin
+}*/
+
+var board={cells:[]};
+                
+
+var cell={};
+
+
+
+    for (var r=0;r<6;r++){
+        
+        for(var c=0;c<6;c++){
+          var cell={};
+            cell.row=r;
+            cell.col=c;
+          
+            cell.isMine=false;
+            cell.isMarked=false;
+            cell.hidden=true;
+                    
+           addToCells(cell);
+
+        }
+
+    }
+   
+function addToCells(cell){
+
+  
+   board.cells.push(cell);
+   
 }
-
-
-
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
