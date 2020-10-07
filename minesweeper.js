@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
+//var audio=document.getElementsByTagName('audio')[0];
+
+//audio.play();
+
+
+
 // Define your `board` object here!
 //Your board object needs a property named cells
 //cells.board.cells should be an array.
@@ -94,7 +100,7 @@ function startGame () {
 function reset(){
 
   //window.onload = function(){
- 
+     // board={};
       board.cells=[];  
 
       setBoard();

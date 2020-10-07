@@ -4,6 +4,8 @@
    <!-- <META HTTP-EQUIV="refresh" CONTENT="5">-->
     <title>Minesweeper</title>
     <link rel="stylesheet" href="minesweeper.css">
+
+    
     <script src="lib/tests.js"></script>
     <script src="lib/lib.js"></script>
     <script src="minesweeper.js"></script>
@@ -12,8 +14,17 @@
     <div id="message"></div>
     <div id="notes"></div>
     <div class="board"></div>
-    <button class="button button1"  onClick="board.reset()">Reset</button>
+    <button class="button button1"  onClick="board.reset()">Restart</button>
+    <audio id="sound">
+         <source src="audios/beep-10.wav" ></source>
+     
+    </audio>
 
- 
+    <audio id="sound2">
+      <source src="audios/beep.mp3" ></source>
+  <!-- <source src="audio/beep.ogg"></source>-->
+ </audio>
+   
+    
   </body>
 </html>
